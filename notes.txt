@@ -13,3 +13,24 @@ Project Setup:
 - to setup prettier:
     - create file .prettierrc in root.
     - create .prettierignore file: to not apply prettier settings in some files.
+
+
+----------- DATABASE CONNECTION ----
+- create a project in your mongodb atlas org.
+- create a user in database access.
+- setup your IP in network access.
+- get MONGODB_URI and add it into .env file.
+- install dotenv for proper usage of env variables.
+- install mongoose for database connection.
+- always remember db connection is async.
+
+------------ dotenv setup ----------
+- to get the env variables working and imported properly, we use dotenv package.
+- it provides only commonjs method of importing, which is:
+    "require('dotenv).config({path: 'path of .env'})"
+
+- but here we want to use modulejs method of import, so we use an expermental trick to get it done.
+1. import dotenv from "dotenv";
+dotenv.config({path: 'path of env'})
+2. add "-r dotenv/config --experimental-json-modules" in your dev command, which now looks like:
+"dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
