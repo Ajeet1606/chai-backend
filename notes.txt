@@ -1,0 +1,15 @@
+Project Setup:
+- npm init
+- create Readme.md 
+- git init
+- create gitignore
+- create public & public/temp for storing images.
+- git doesn't track empty folders, so we add a .gitkeep file.
+- install nodemon for restarting the server on each change.
+- create src
+- create app.js, constants.js & index.js in src.
+- create folders: controllers, db, models, routes, utils.
+- install prettier on project basis not on vs code: when multiple people are working on same project, they can have different spacing config etc, which can lead to conflicts sometimes, so when prettier is working inside project, it has a localized setting, it keeps same for all.
+- to setup prettier:
+    - create file .prettierrc in root.
+    - create .prettierignore file: to not apply prettier settings in some files.
