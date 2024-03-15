@@ -3,9 +3,9 @@ Project Setup:
 - create Readme.md 
 - git init
 - create gitignore
-- create public & public/temp for storing images.
-- git doesn't track empty folders, so we add a .gitkeep file.
-- install nodemon for restarting the server on each change.
+- create public & public/temp for storing images or some static files.
+- git doesn't track empty folders, so we add a .gitkeep file for now.
+- install nodemon for restarting the server on each update.
 - create src
 - create app.js, constants.js & index.js in src.
 - create folders: controllers, db, models, routes, utils.
@@ -15,7 +15,7 @@ Project Setup:
     - create .prettierignore file: to not apply prettier settings in some files.
 
 
------------ DATABASE CONNECTION ----
+------------------------------------ DATABASE CONNECTION --------------------------------
 - create a project in your mongodb atlas org.
 - create a user in database access.
 - setup your IP in network access.
@@ -24,7 +24,7 @@ Project Setup:
 - install mongoose for database connection.
 - always remember db connection is async.
 
------------- dotenv setup ----------
+------------------------------------ dotenv setup ---------------------------------------
 - to get the env variables working and imported properly, we use dotenv package.
 - it provides only commonjs method of importing, which is:
     "require('dotenv).config({path: 'path of .env'})"
@@ -34,3 +34,21 @@ Project Setup:
 dotenv.config({path: 'path of env'})
 2. add "-r dotenv/config --experimental-json-modules" in your dev command, which now looks like:
 "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
+
+---------------------------------- MIDDLEWARES ------------------------------------
+- a layer of software that sits between the core application logic and the server, acting as a bridge for incoming requests and outgoing responses. it helps us in performing various tasks in req, res cycle.
+[req, res] cycle:
+client req -> middleware -> core application logic -> middleware -> server sends response
+
+
+types:
+1. Authentication Middleware: 
+2. Logging Middleware:
+3. Error Handling Middleware:
+4. CORS (Cross-Origin Resource Sharing) Middleware:
+5. Body Parsing Middleware:
+6. Routing Middleware:
+and more.
+
+- CORS is a middleware example, to use them, we do app.use(cors())
+- app.use is used to setup middlewares or do some configuration.
