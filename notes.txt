@@ -40,15 +40,34 @@ dotenv.config({path: 'path of env'})
 [req, res] cycle:
 client req -> middleware -> core application logic -> middleware -> server sends response
 
+definition: Middleware (also called pre and post hooks) are functions which are passed control during execution of asynchronous functions. Middleware is specified on the schema level and is useful for writing plugins.
 
 types:
-1. Authentication Middleware: 
-2. Logging Middleware:
-3. Error Handling Middleware:
-4. CORS (Cross-Origin Resource Sharing) Middleware:
-5. Body Parsing Middleware:
-6. Routing Middleware:
-and more.
+1. Document middleware
+2. Model middleware
+3. Aggregate middleware
+4. Query middleware
 
 - CORS is a middleware example, to use them, we do app.use(cors())
 - app.use is used to setup middlewares or do some configuration.
+
+- Standard Error and response format setup.
+
+----------------------- lecture 9 -------------------
+- create user & video models
+- install mongoose-aggregate-paginate-v2 package.
+
+- install bcrypt and jsonwebtoken for password encryption/decryption and getting tokens respectively.
+- we use all above 3 packages in user/video models.
+
+- how do we use them?
+- mongoose provides some middlewares/hooks, one such is pre hook which runs just before saving data into model on every call, so we do our work using this.
+
+JWT: it is a bearer token.
+JWT library gives us tokens but it takes some values to create them:
+- payload
+- privateKeys
+- expiry
+there's are multiple ways to do depending on what data we're using to create.
+
+
