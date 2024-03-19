@@ -71,3 +71,11 @@ JWT library gives us tokens but it takes some values to create them:
 there's are multiple ways to do depending on what data we're using to create.
 
 
+------------------------ lecture 10 --------------------
+-- file uploading:
+- cloud storage providers: cloudinary
+- packages to help file uploading: multer, express-fileupload
+
+install cloudinary & multer packages.
+
+process: take file from frontend, store on our backend server temporarily, now upload it on cloud provider (takes file path from server, stores on cloud and then deletes from server, as unlinking), for safety purpose we stored it on backend as well, if we failed to upload on cloud once, we can try again.
