@@ -79,3 +79,80 @@ there's are multiple ways to do depending on what data we're using to create.
 install cloudinary & multer packages.
 
 process: take file from frontend, store on our backend server temporarily, now upload it on cloud provider (takes file path from server, stores on cloud and then deletes from server, as unlinking), for safety purpose we stored it on backend as well, if we failed to upload on cloud once, we can try again.
+
+
+------------------------ lecture 11: HTTP Crash Course --------------------------
+- Hyper text transfer protocol
+URL: Uniform resource locator
+URI: Uniform resource identifier
+URN: Uniform resource name
+
+HTTP Headers: 
+- meatadata/information being shared over the network requests along with req, res. format: key-value
+- some headers are predefined, we can add ours also.
+Uses: in caching, auth, state management
+
+Categories of headers:
+
+Request headers: from client
+Response headers: from server
+Representation headers: encoding/compression
+Payload headers: data
+etc.
+
+Most Common Headers:
+- Accept: application/json
+- User-Agent: info about sender of req(postman/browser-type/phone etc)
+- Authorization: Bearer token
+- Content-type: img/pdf/text etc.
+- Cookie: key-value
+- Cache-control: time to expire data etc..
+
+
+CORS:
+- Access-Control-Allow-Origin
+- Access-Control-Allow-Credentials
+- Access-Control-Allow-Method
+
+
+Security:
+- Cross-Origin-Embedder-Policy
+- Cross-Origin-Opener-Policy
+- Content-Security-Policy
+- X-XSS-Protection
+
+HTTP Methods:
+Basic set of operations that can be used to interact with server.
+
+GET: retrieve a resource
+HEAD: No msg body (res headers only)
+OPTIONS: what operations are available
+TRACE: loopback test (get same data)
+DELETE: remove a resource
+PUT: replace a resource
+POST: create a resource
+PATCH: change a part of resource.
+
+HTTP Status Codes:
+
+1xx     Informational
+2xx     Success
+3xx     Redirection
+4xx     Client Error
+5xx     Server Error
+
+examples:
+
+100     Continue
+102     Processing
+200     Ok
+201     Created
+202     Accepted
+307     Temporarily redirect
+308     Permanent redirect
+400     Bad Request
+401     Unauthorized
+402     Payment required
+404     Not found
+500     Internal server Error
+504     Gateway times out.
