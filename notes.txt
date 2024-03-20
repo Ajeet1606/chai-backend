@@ -127,7 +127,7 @@ Basic set of operations that can be used to interact with server.
 GET: retrieve a resource
 HEAD: No msg body (res headers only)
 OPTIONS: what operations are available
-TRACE: loopback test (get same data)
+TRACE: loopback test (get same data)    //read more.
 DELETE: remove a resource
 PUT: replace a resource
 POST: create a resource
@@ -144,15 +144,57 @@ HTTP Status Codes:
 examples:
 
 100     Continue
+101     Switching Protocols
 102     Processing
+103     Early Hints
+
 200     Ok
 201     Created
 202     Accepted
+203     Non Authoritative information
+204     No Content
+205     Reset Content
+206     Partial Content
+207     Multi Status
+208     Already reported
+226     instance manupulation used
+
+300     Multiple Choices
+301     Moved Permanently
+302     found
+303     See other
+304     Not modifed
+305     use proxy(deprecated)
+306     unused
 307     Temporarily redirect
 308     Permanent redirect
+
 400     Bad Request
-401     Unauthorized
+401     Unauthorized/unauthenticated
 402     Payment required
+403     Forbidden
 404     Not found
+405     Method not allowed
+406     Not Acceptable
+407     Proxy auth required
+408     Request Timeout
+409     Conflict
+410     Gone/deleted
+411     Content-length header required
+
 500     Internal server Error
+502     Bad Gateway
+503     Service unavailable
 504     Gateway times out.
+
+401:
+You need to provide valid credentials (such as a username and password) to access this resource, but you haven't provided them or the ones you provided are incorrect.
+
+403:
+You are authenticated, but you are not allowed to access this resource. It's forbidden.(insufficient permission)
+
+
+301 & 308:
+- they denote that the resource has been moved to a new location Permanently and return a location header with new URL.
+- browsers automatically redirect to the new URL.
+- for 301, Redirection request method becomes GET but in 308, it remains same as earlier one.
