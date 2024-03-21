@@ -187,10 +187,10 @@ examples:
 503     Service unavailable
 504     Gateway times out.
 
-401:
+401: unauthenticated
 You need to provide valid credentials (such as a username and password) to access this resource, but you haven't provided them or the ones you provided are incorrect.
 
-403:
+403: Forbidden
 You are authenticated, but you are not allowed to access this resource. It's forbidden.(insufficient permission)
 
 
