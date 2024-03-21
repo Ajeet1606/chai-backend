@@ -198,3 +198,9 @@ You are authenticated, but you are not allowed to access this resource. It's for
 - they denote that the resource has been moved to a new location Permanently and return a location header with new URL.
 - browsers automatically redirect to the new URL.
 - for 301, Redirection request method becomes GET but in 308, it remains same as earlier one.
+
+
+------------- lecture 12 : Routers and controllers --------
+
+- create methods for controllers
+- create routes

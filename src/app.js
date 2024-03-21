@@ -3,7 +3,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 
 //create app using express.
-export const app = express();
+const app = express();
 
 //we setup the middlewares
 const corsOptions = {
@@ -22,3 +22,20 @@ app.use(express.static("public"));
 
 //cookie-parser: used to do CRUD on cookies of user in his browser.
 app.use(cookieParser());
+
+//routes import
+
+import userRouter from "./routes/user.routes.js";
+
+//routes declaration
+/**
+ * app.get method when router and controller defined header.
+ * here we have modular approach, controllers and routes are coming from other files, we do app.use, middleware appproach.
+ */
+
+//now whenever user goes to /users, it transfers the control to userRouter.
+app.use("/api/v1/users", userRouter);
+
+//url: http://localhost:8000/api/v1/users/register
+
+export {app}
