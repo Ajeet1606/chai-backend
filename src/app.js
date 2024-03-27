@@ -29,7 +29,7 @@ import userRouter from "./routes/user.routes.js";
 
 //routes declaration
 /**
- * app.get method when router and controller defined header.
+ * app.get method when router and controller defined here.
  * here we have modular approach, controllers and routes are coming from other files, we do app.use, middleware appproach.
  */
 

@@ -68,7 +68,7 @@ JWT library gives us tokens but it takes some values to create them:
 - payload
 - privateKeys
 - expiry
-there's are multiple ways to do depending on what data we're using to create.
+there are multiple ways to do depending on what data we're using to create.
 
 
 ------------------------ lecture 10 --------------------
@@ -204,3 +204,9 @@ You are authenticated, but you are not allowed to access this resource. It's for
 
 - create methods for controllers
 - create routes
+
+------------- DOCS notes ----------------
+
+Routes: It's a concept which associates an HTPP verb (get, put, post etc), a URL path and a function that is called to handle that request.
+HTTP verb: defines the type of request the route can handle
+Route path: it is the endpoint at which a request can be made.
