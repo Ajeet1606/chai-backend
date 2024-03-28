@@ -210,3 +210,11 @@ You are authenticated, but you are not allowed to access this resource. It's for
 Routes: It's a concept which associates an HTPP verb (get, put, post etc), a URL path and a function that is called to handle that request.
 HTTP verb: defines the type of request the route can handle
 Route path: it is the endpoint at which a request can be made.
+
+---------------------------------- lecture 15 ------------------------
+
+Access tokens: short lived: used for authentication purpose: suppose its duration is 5days, so its saved in local storage and using that backend keeps the user logged in for 5days.
+Refresh tokens: long lived, longer duration: user and DB both have a common token, when access token is expired, user can hit an endpoint and backend verifies the refresh token, if they match, user is given a new access token, and login using that, this way he doesn't need to use email password everytime.
+
+- built login logout controllers.
+- in controllers, if you don't use req/res, name them as _ in parameter. 
