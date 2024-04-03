@@ -1,4 +1,6 @@
 import multer from "multer";
+import { MulterError } from "multer";
+import { ApiError } from "../utils/ApiError.js";
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -10,5 +12,19 @@ const storage = multer.diskStorage({
 })
 
 export const upload = multer({
-    storage,
+    storage
 });
+
+const handleMulterError = (err, req, res, next) =>{
+    if(err instanceof MulterError){
+        if(err.code === "LIMIT_UNEXPECTED_FILE"){
+            throw new ApiError(400, "Too many files uploaded.")
+        }else{
+            throw new ApiError(400, `${err.message}`)
+        }
+    }else{
+        throw new ApiError(500, "Something went wrong.")
+    }
+}
+
+export {handleMulterError}
