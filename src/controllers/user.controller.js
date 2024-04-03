@@ -255,10 +255,10 @@ const updateUserPassword = asyncHandler(async (req, res) => {
 
   //find the user, it's in req.user coz of verifyJWT middleware.
   const user = await User.findById(req.user._id);
+  console.log("user", user);
   //check if we've got the right (old) password
   const isPasswordCorrect = await user.isPasswordCorrect(oldPassword);
 
-  console.log("user", user);
   console.log(isPasswordCorrect);
   if (!isPasswordCorrect) {
     console.log("inside");
@@ -269,10 +269,7 @@ const updateUserPassword = asyncHandler(async (req, res) => {
   await user.save({ validateBeforeSave: false });
 
   console.log("user", user);
-  return res.status(
-    200,
-    new ApiResponse(200, {}, "Password Changed Successfully")
-  );
+  return res.status(200).json(new ApiResponse(200, {}, "Password Changed Successfully"))
 });
 
 const getCurrentUser = asyncHandler(async (req, res) => {
@@ -315,6 +312,7 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
   }
 
   const avatar = await uploadOnCloudinary(avatarLocalPath);
+  
   if (!avatar.url) {
     throw new ApiError(400, "Error while saving the file.");
   }
@@ -323,12 +321,13 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
     req.user._id,
     {
       $set: {
-        avatar,
+        avatar: avatar.url,
       },
     },
     { new: true }
   );
 
+  //delete old cloudinary image.
   return res
     .status(200)
     .json(new ApiResponse(201, user, "Avatar updated successfully."));
@@ -336,12 +335,14 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
 
 const updateUserCoverImage = asyncHandler(async (req, res) => {
   const coverImageLocalPath = req.file?.path;
+  console.log(coverImageLocalPath);
 
   if (!coverImageLocalPath) {
     throw new ApiError(400, "Cover file is required.");
   }
 
   const coverImage = await uploadOnCloudinary(coverImageLocalPath);
+
   if (!coverImage.url) {
     throw new ApiError(400, "Error while saving file to cloud.");
   }
@@ -350,7 +351,7 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
     req.user?._id,
     {
       $set: {
-        coverImage,
+        coverImage: coverImage.url,
       },
     },
     {
@@ -371,4 +372,5 @@ export {
   getCurrentUser,
   updateAccountDetails,
   updateUserAvatar,
+  updateUserCoverImage
 };
