@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { uploadVideo } from "../controllers/video.controller.js";
+import { deleteVideoById, getVideoById, uploadVideo } from "../controllers/video.controller.js";
 import { upload, handleMulterError } from "../midddlewares/multer.middleware.js";
 
 const router = Router();
@@ -19,5 +19,8 @@ router.route("/upload-video").post(
   handleMulterError,
   uploadVideo
 );
+
+router.route("/delete-video/:videoId").delete(deleteVideoById);
+router.route("/getVideoById/:videoId").get(getVideoById);
 
 export default router;

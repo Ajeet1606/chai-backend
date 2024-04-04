@@ -74,6 +74,47 @@ const uploadVideo = asyncHandler(async (req, res) => {
     return res.status(200).json(new ApiResponse(201, createdVideoDocument, "Video File uploaded successfully."))
 })
 
+
+const deleteVideoById = asyncHandler(async(req, res) => {
+    //get video id from query params
+    //check if it exists
+    //get from DB
+    //delete from DB
+    //return response
+    const videoId = req.params?.videoId;
+    if(!videoId){
+        throw new ApiError(400, "Couldn't get the Video Id.")
+    }
+
+    const video = await Video.findByIdAndDelete(videoId);
+
+    if(!video){
+        throw new ApiError(400, "Video not found.")
+    }
+    return res.status(200).json(new ApiResponse(200, video, "Video Deleted Successfully."))
+})
+
+const getVideoById = asyncHandler(async (req, res) =>{
+    //get id from URL params
+    //search in DB
+    //handle found/not found case
+    //return response
+
+    const videoId = req.params?.videoId
+    if(!videoId){
+        throw new ApiError(400, "Invalid Request.")
+    }
+
+    const video = await Video.findById(videoId);
+
+    if(!video){
+        throw new ApiError(400, "Invalid Video Id.")
+    }
+
+    return res.status(200).json(new ApiResponse(200, video, "Video Fetched Successfully."))
+})
 export {
-    uploadVideo
+    uploadVideo,
+    deleteVideoById,
+    getVideoById
 }
